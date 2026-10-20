@@ -195,8 +195,8 @@ class NavigationResolver {
     this._completer,
     this.route, {
     this.pendingRoutes = const [],
-    bool isReevaluating = false,
-  }) : _isReevaluating = isReevaluating;
+    this._isReevaluating = false,
+  });
 
   /// Completes [_completer] with either true to continue navigation
   /// or false to abort navigation

@@ -657,14 +657,12 @@ class TabsRouter extends RoutingController {
   TabsRouter(
       {required this.routeCollection,
       required this.key,
-      required RouteData routeData,
+      required this._routeData,
       this.homeIndex = -1,
       required this.preload,
       required this.matchId,
-      RoutingController? parent})
-      : matcher = RouteMatcher(routeCollection),
-        _parent = parent,
-        _routeData = routeData;
+      this._parent})
+      : matcher = RouteMatcher(routeCollection);
 
   /// Called to preload a page before other navigation events occur
   /// if it returns true, the page has been preloaded, otherwise we assume it's already loaded
@@ -1000,11 +998,10 @@ abstract class StackRouter extends RoutingController {
     required this.key,
     required this.matchId,
     OnNestedNavigateCallBack? onNavigate,
-    RoutingController? parent,
+    this._parent,
     GlobalKey<NavigatorState>? navigatorKey,
   })  : _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>(),
-        _onNavigateCallback = onNavigate,
-        _parent = parent;
+        _onNavigateCallback = onNavigate;
 
   /// The pending routes handler for this controller
   @internal
@@ -1931,13 +1928,12 @@ class NestedStackRouter extends StackRouter {
     required this.routeCollection,
     required super.key,
     required super.matchId,
-    required RouteData routeData,
+    required this._routeData,
     this.managedByWidget = false,
     required RoutingController super.parent,
     super.onNavigate,
     super.navigatorKey,
-  })  : matcher = RouteMatcher(routeCollection),
-        _routeData = routeData;
+  })  : matcher = RouteMatcher(routeCollection);
 
   @override
   RouteData get routeData => _routeData;

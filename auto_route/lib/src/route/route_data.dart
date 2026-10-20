@@ -37,14 +37,12 @@ class RouteData<R> {
   RouteData({
     required RouteMatch route,
     required this.router,
-    Completer<R?>? popCompleter,
-    RouteData? parent,
+    this._popCompleter,
+    this._parent,
     required this.stackKey,
     required List<RouteMatch> pendingChildren,
     required this.type,
   })  : _match = route,
-        _popCompleter = popCompleter,
-        _parent = parent,
         _pendingChildren = List<RouteMatch>.from(pendingChildren);
 
   /// Builds page title that's passed to [_PageBasedCupertinoPageRoute.title]
@@ -86,7 +84,7 @@ class RouteData<R> {
     if (router.ignorePopCompleters || _popCompleter == null) {
       return SynchronousFuture(null);
     } else {
-      return _popCompleter!.future;
+      return _popCompleter.future;
     }
   }
 
@@ -225,8 +223,8 @@ class RouteData<R> {
       // if pop completers are ignored then we don't complete the pop completer
       return;
     }
-    if (_popCompleter != null && !_popCompleter!.isCompleted) {
-      _popCompleter?.complete(result);
+    if (_popCompleter != null && !_popCompleter.isCompleted) {
+      _popCompleter.complete(result);
     }
   }
 

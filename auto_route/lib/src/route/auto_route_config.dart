@@ -100,7 +100,7 @@ class AutoRoute {
   }
 
   AutoRoute._({
-    String? path,
+    this._path,
     required this.page,
     this.usesPathAsKey = false,
     this.guards = const [],
@@ -115,12 +115,11 @@ class AutoRoute {
     this.allowSnapshotting = true,
     this.initial = false,
     this.children,
-  })  : _path = path,
-        _pageBuilder = page.builder;
+  })  : _pageBuilder = page.builder;
 
   AutoRoute._change({
     required this.page,
-    required String path,
+    required String this._path,
     required this.usesPathAsKey,
     required this.guards,
     required this.fullMatch,
@@ -134,8 +133,7 @@ class AutoRoute {
     required this.children,
     required this.initial,
     required this.allowSnapshotting,
-  })  : _path = path,
-        _pageBuilder = page.builder;
+  })  : _pageBuilder = page.builder;
 
   /// Builds a default AutoRoute instance with any [type]
   factory AutoRoute({

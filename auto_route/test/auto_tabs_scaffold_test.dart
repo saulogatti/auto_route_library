@@ -119,7 +119,7 @@ class TabsScaffoldRoute extends PageRouteInfo<void> {
         SecondRoute(),
       ],
       animationDuration: Duration.zero,
-      appBarBuilder: (_, __) => AppBar(title: const Text('My App Bar')),
+      appBarBuilder: (_, _) => AppBar(title: const Text('My App Bar')),
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
           currentIndex: tabsRouter.activeIndex,

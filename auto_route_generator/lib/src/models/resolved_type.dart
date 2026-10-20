@@ -25,9 +25,9 @@ class ResolvedType {
     this.import,
     this.typeArguments = const [],
     this.isNullable = false,
-    required bool isRecordType,
+    required this._isRecordType,
     this.nameInRecord,
-  }) : _isRecordType = isRecordType;
+  });
 
   /// Default constructor
   ResolvedType({
